@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Type {{types.libelle}} {% endblock %}
+{% block Titre %} Type {{types.libelle}} {% endblock %}
+ 
+
+{% block body %}
+{{form_start(form)}}
+    {{form_widget(form)}}
+    <input type="submit" class="btn btn-primary" value="valider">
+{{form_end(form)}}
+
+{% endblock %}
+
+
+
