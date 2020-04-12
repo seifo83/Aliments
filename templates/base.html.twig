@@ -24,11 +24,10 @@
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                           <a class="dropdown-item" href="{{path("aliments")}}">aliments</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="">administration</a>
                       </div>
                   </li>
-
+                  {% if is_granted('ROLE_ADMIN') %}
+                 
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Administration
@@ -39,16 +38,43 @@
                         <a class="dropdown-item" href="">administration</a>
                     </div>
                 </li>
+
+                {% endif %}
+
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Type
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href="{{path("type")}}">Type</a>
+                {% if is_granted('ROLE_ADMIN') %}
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="{{path("typeliste_admin")}}">administration</a>
+                {% endif %}
                   </div>
               </li>
+
+              {% if not app.user %}
+ 
+              <li class="nav-item">
+                <a class="nav-link" href="{{path("inscription")}}">Inscription</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Connexion
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{path("connexion")}}">Login</a>
+                  </div>
+                </li>
+
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{{path("deconnexion")}}">Logout</a>
+              </li>
+
+            {% endif %}
+              
                 
               </ul>
           </div>
